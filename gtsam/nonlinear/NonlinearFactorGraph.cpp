@@ -52,28 +52,29 @@ double NonlinearFactorGraph::probPrime(const Values& values) const {
 }
 
 /* ************************************************************************* */
-void NonlinearFactorGraph::print(const std::string& str, const KeyFormatter& keyFormatter) const {
-  cout << str << "size: " << size() << endl << endl;
+void NonlinearFactorGraph::print(const std::string& str, const KeyFormatter& keyFormatter, std::ostream& os = std::cout) const {
+  os << str << "size: " << size() << endl << endl;
   for (size_t i = 0; i < factors_.size(); i++) {
     stringstream ss;
     ss << "Factor " << i << ": ";
     if (factors_[i] != nullptr) {
       factors_[i]->print(ss.str(), keyFormatter);
-      cout << "\n";
+      os << "\n";
     } else {
-      cout << ss.str() << "nullptr\n";
+      os << ss.str() << "nullptr\n";
     }
   }
-  std::cout.flush();
+  os.flush();
 }
 
 /* ************************************************************************* */
 void NonlinearFactorGraph::printErrors(const Values& values, const std::string& str,
     const KeyFormatter& keyFormatter,
-    const std::function<bool(const Factor* /*factor*/, double /*whitenedError*/, size_t /*index*/)>& printCondition) const
+    const std::function<bool(const Factor* /*factor*/, double /*whitenedError*/, size_t /*index*/)>& printCondition,
+    std::ostream& os = std::cout) const
 {
-  cout << str << "size: " << size() << endl
-       << endl;
+  os << str << "size: " << size() << endl
+     << endl;
   for (size_t i = 0; i < factors_.size(); i++) {
     const sharedFactor& factor = factors_[i];
     const double errorValue = (factor != nullptr ? factors_[i]->error(values) : .0);
@@ -83,14 +84,14 @@ void NonlinearFactorGraph::printErrors(const Values& values, const std::string& 
     stringstream ss;
     ss << "Factor " << i << ": ";
     if (factor == nullptr) {
-      cout << "nullptr" << "\n";
+      os << "nullptr" << "\n";
     } else {
-      factor->print(ss.str(), keyFormatter);
-      cout << "error = " << errorValue << "\n";
+      factor->print(ss.str(), keyFormatter, os);
+      os << "error = " << errorValue << "\n";
     }
-    cout << "\n";
+    os << "\n";
   }
-  std::cout.flush();
+  os.flush();
 }
 
 /* ************************************************************************* */

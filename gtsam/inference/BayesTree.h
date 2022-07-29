@@ -42,7 +42,7 @@ namespace gtsam {
     std::size_t maxConditionalSize;
     double avgSeparatorSize;
     std::size_t maxSeparatorSize;
-    void print(const std::string& s = "") const ;
+    void print(const std::string& s = "", std::ostream& os = std::cout) const ;
   };
 
   /** store all the sizes  */
@@ -126,7 +126,8 @@ namespace gtsam {
   public:
     /** print */
     void print(const std::string& s = "",
-        const KeyFormatter& keyFormatter = DefaultKeyFormatter) const;
+        const KeyFormatter& keyFormatter = DefaultKeyFormatter,
+        std::ostream& os = std::cout) const;
     /// @}
 
     /// @name Standard Interface
@@ -299,8 +300,9 @@ namespace gtsam {
 
     void print(
         const std::string& s = "",
-        const KeyFormatter& formatter = DefaultKeyFormatter) const override {
-      clique->print(s + "stored clique", formatter);
+        const KeyFormatter& formatter = DefaultKeyFormatter,
+        std::ostream& os = std::cout) const override {
+      clique->print(s + "stored clique", formatter, os);
     }
   };
 

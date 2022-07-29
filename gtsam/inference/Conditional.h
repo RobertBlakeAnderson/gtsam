@@ -68,7 +68,9 @@ namespace gtsam {
     /// @{
 
     /** print with optional formatter */
-    void print(const std::string& s = "Conditional", const KeyFormatter& formatter = DefaultKeyFormatter) const;
+    void print(const std::string& s = "Conditional",
+               const KeyFormatter& formatter = DefaultKeyFormatter,
+               std::ostream& os = std::cout) const;
 
     /** check equality */
     bool equals(const This& c, double tol = 1e-9) const;

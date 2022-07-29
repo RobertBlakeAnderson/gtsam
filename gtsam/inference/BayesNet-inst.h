@@ -30,8 +30,9 @@ namespace gtsam {
 /* ************************************************************************* */
 template <class CONDITIONAL>
 void BayesNet<CONDITIONAL>::print(const std::string& s,
-                                  const KeyFormatter& formatter) const {
-  Base::print(s, formatter);
+                                  const KeyFormatter& formatter,
+                                  std::ostream& os) const {
+  Base::print(s, formatter, os);
 }
 
 /* ************************************************************************* */

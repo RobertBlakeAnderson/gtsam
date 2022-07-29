@@ -26,16 +26,16 @@
 namespace gtsam {
 
   /* ************************************************************************* */
-  void Factor::print(const std::string& s, const KeyFormatter& formatter) const
+  void Factor::print(const std::string& s, const KeyFormatter& formatter, std::ostream& os) const
   {
-    return this->printKeys(s, formatter);
+    return this->printKeys(s, formatter, os);
   }
 
   /* ************************************************************************* */
-  void Factor::printKeys(const std::string& s, const KeyFormatter& formatter) const {
-    std::cout << (s.empty() ? "" : s + " ");
-    for (Key key : keys_) std::cout << " " << formatter(key);
-    std::cout << std::endl;
+  void Factor::printKeys(const std::string& s, const KeyFormatter& formatter, std::ostream& os) const {
+    os << (s.empty() ? "" : s + " ");
+    for (Key key : keys_) os << " " << formatter(key);
+    os << std::endl;
   }
 
   /* ************************************************************************* */

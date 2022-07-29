@@ -94,8 +94,9 @@ namespace gtsam {
     /// print
     void print(
         const std::string& s = "SymbolicFactorGraph",
-        const KeyFormatter& formatter = DefaultKeyFormatter) const override {
-      Base::print(s, formatter);
+        const KeyFormatter& formatter = DefaultKeyFormatter,
+        std::ostream& os = std::cout) const override {
+      Base::print(s, formatter, os);
     }
 
     /// @}

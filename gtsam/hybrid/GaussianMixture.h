@@ -121,7 +121,8 @@ class GTSAM_EXPORT GaussianMixture
   /* print utility */
   void print(
       const std::string &s = "GaussianMixture\n",
-      const KeyFormatter &formatter = DefaultKeyFormatter) const override;
+      const KeyFormatter &formatter = DefaultKeyFormatter,
+      std::ostream& os = std::cout) const override;
 
   /// @}
 

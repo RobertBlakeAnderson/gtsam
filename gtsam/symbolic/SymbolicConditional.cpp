@@ -24,8 +24,9 @@ using namespace std;
 
 /* ************************************************************************* */
 void SymbolicConditional::print(const std::string& str,
-                                const KeyFormatter& keyFormatter) const {
-  BaseConditional::print(str, keyFormatter);
+                                const KeyFormatter& keyFormatter,
+                                std::ostream& os) const {
+  BaseConditional::print(str, keyFormatter, os);
 }
 
 /* ************************************************************************* */

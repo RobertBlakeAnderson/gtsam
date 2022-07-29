@@ -95,15 +95,17 @@ namespace gtsam {
     /// print
     void print(
         const std::string& s = "SymbolicFactor",
-        const KeyFormatter& formatter = DefaultKeyFormatter) const override {
-      Base::print(s, formatter);
+        const KeyFormatter& formatter = DefaultKeyFormatter,
+        std::ostream& os = std::cout) const override {
+      Base::print(s, formatter, os);
     }
 
     /// print only keys
     void printKeys(
         const std::string& s = "SymbolicFactor",
-        const KeyFormatter& formatter = DefaultKeyFormatter) const override {
-      Base::printKeys(s, formatter);
+        const KeyFormatter& formatter = DefaultKeyFormatter,
+        std::ostream& os = std::cout) const override {
+      Base::printKeys(s, formatter, os);
     }
 
     /// @}

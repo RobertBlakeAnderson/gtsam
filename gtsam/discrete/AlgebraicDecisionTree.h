@@ -158,11 +158,12 @@ namespace gtsam {
     /// print method customized to value type `double`.
     void print(const std::string& s,
               const typename Base::LabelFormatter& labelFormatter =
-                  &DefaultFormatter) const {
+                  &DefaultFormatter,
+                  std::ostream& os = std::cout) const {
       auto valueFormatter = [](const double& v) {
         return (boost::format("%4.8g") % v).str();
       };
-      Base::print(s, labelFormatter, valueFormatter);
+      Base::print(s, labelFormatter, valueFormatter, os);
     }
 
     /// Equality method customized to value type `double`.

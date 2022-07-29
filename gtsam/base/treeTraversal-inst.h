@@ -200,13 +200,15 @@ FastVector<boost::shared_ptr<typename FOREST::Node> > CloneForest(
 namespace {
 struct PrintForestVisitorPre {
   const KeyFormatter& formatter;
-  PrintForestVisitorPre(const KeyFormatter& formatter) :
-      formatter(formatter) {
+  std::ostream& os;
+  PrintForestVisitorPre(const KeyFormatter& formatter, std::ostream& os = std::cout) :
+      formatter(formatter),
+      os(os) {
   }
   template<typename NODE> std::string operator()(
       const boost::shared_ptr<NODE>& node, const std::string& parentString) {
     // Print the current node
-    node->print(parentString + "-", formatter);
+    node->print(parentString + "-", formatter, os);
     // Increment the indentation
     return parentString + "| ";
   }
@@ -217,8 +219,9 @@ struct PrintForestVisitorPre {
  *  To print each node, this function calls the \c print function of the tree nodes. */
 template<class FOREST>
 void PrintForest(const FOREST& forest, std::string str,
-    const KeyFormatter& keyFormatter) {
-  PrintForestVisitorPre visitor(keyFormatter);
+    const KeyFormatter& keyFormatter,
+    std::ostream& os = std::cout) {
+  PrintForestVisitorPre visitor(keyFormatter, os);
   DepthFirstForest(forest, str, visitor);
 }
 }

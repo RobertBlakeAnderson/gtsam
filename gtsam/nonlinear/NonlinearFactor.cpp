@@ -24,12 +24,13 @@ namespace gtsam {
 
 /* ************************************************************************* */
 void NonlinearFactor::print(const std::string& s,
-    const KeyFormatter& keyFormatter) const {
-  std::cout << s << "  keys = { ";
+    const KeyFormatter& keyFormatter,
+    std::ostream& os = std::cout) const {
+  os << s << "  keys = { ";
   for(Key key: keys()) {
-    std::cout << keyFormatter(key) << " ";
+    os << keyFormatter(key) << " ";
   }
-  std::cout << "}" << std::endl;
+  os << "}" << std::endl;
 }
 
 /* ************************************************************************* */

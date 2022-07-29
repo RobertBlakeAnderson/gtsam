@@ -25,8 +25,8 @@
 namespace gtsam {
 
 /* ************************************************************************* */
-void BayesTreeCliqueStats::print(const std::string& s) const {
-  std::cout << s
+void BayesTreeCliqueStats::print(const std::string& s, std::ostream& os) const {
+  os << s
     << "avg Conditional Size: " << avgConditionalSize << std::endl
     << "max Conditional Size: " << maxConditionalSize << std::endl
     << "avg Separator Size: "   << avgSeparatorSize   << std::endl

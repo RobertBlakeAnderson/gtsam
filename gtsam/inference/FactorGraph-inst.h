@@ -35,13 +35,14 @@ namespace gtsam {
 /* ************************************************************************* */
 template <class FACTOR>
 void FactorGraph<FACTOR>::print(const std::string& s,
-                                const KeyFormatter& formatter) const {
-  std::cout << (s.empty() ? "" : s + " ") << std::endl;
-  std::cout << "size: " << size() << std::endl;
+                                const KeyFormatter& formatter,
+                                std::ostream& os) const {
+  os << (s.empty() ? "" : s + " ") << std::endl;
+  os << "size: " << size() << std::endl;
   for (size_t i = 0; i < factors_.size(); i++) {
     std::stringstream ss;
     ss << "factor " << i << ": ";
-    if (factors_[i]) factors_[i]->print(ss.str(), formatter);
+    if (factors_[i]) factors_[i]->print(ss.str(), formatter, os);
   }
 }
 

@@ -66,13 +66,14 @@ namespace gtsam {
 
   /* ************************************************************************ */
   void DecisionTreeFactor::print(const string& s,
-                                 const KeyFormatter& formatter) const {
-    cout << s;
-    cout << " f[";
+                                 const KeyFormatter& formatter,
+                                 std::ostream& os) const {
+    os << s;
+    os << " f[";
     for (auto&& key : keys())
-      cout << boost::format(" (%1%,%2%),") % formatter(key) % cardinality(key);
-    cout << " ]" << endl;
-    ADT::print("", formatter);
+      os << boost::format(" (%1%,%2%),") % formatter(key) % cardinality(key);
+    os << " ]" << endl;
+    ADT::print("", formatter, os);
   }
 
   /* ************************************************************************ */

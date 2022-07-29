@@ -412,18 +412,19 @@ JacobianFactor::JacobianFactor(const GaussianFactorGraph& graph,
 
 /* ************************************************************************* */
 void JacobianFactor::print(const string& s,
-    const KeyFormatter& formatter) const {
+    const KeyFormatter& formatter,
+    std::ostream& os) const {
   if (!s.empty())
-    cout << s << "\n";
+    os << s << "\n";
   for (const_iterator key = begin(); key != end(); ++key) {
-    cout << boost::format("  A[%1%] = ") % formatter(*key);
-    cout << getA(key).format(matlabFormat()) << endl;
+    os << boost::format("  A[%1%] = ") % formatter(*key);
+    os << getA(key).format(matlabFormat()) << endl;
   }
   cout << formatMatrixIndented("  b = ", getb(), true) << "\n";
   if (model_)
-    model_->print("  Noise model: ");
+    model_->print("  Noise model: ", os);
   else
-    cout << "  No noise model" << endl;
+    os << "  No noise model" << endl;
 }
 
 /* ************************************************************************* */

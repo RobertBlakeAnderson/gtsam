@@ -193,7 +193,8 @@ namespace gtsam {
 
     // Implementing Testable interface
     void print(const std::string& s = "",
-      const KeyFormatter& formatter = DefaultKeyFormatter) const override;
+      const KeyFormatter& formatter = DefaultKeyFormatter,
+      std::ostream& os = std::cout) const override;
     bool equals(const GaussianFactor& lf, double tol = 1e-9) const override;
 
     Vector unweighted_error(const VectorValues& c) const; /** (A*x-b) */

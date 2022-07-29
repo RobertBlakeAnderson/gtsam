@@ -70,8 +70,9 @@ public:
   /// @{
 
   /** print */
-  void print(const std::string& s = "", const KeyFormatter& keyFormatter =
-                                            DefaultKeyFormatter) const override;
+  void print(const std::string& s = "",
+             const KeyFormatter& keyFormatter = DefaultKeyFormatter,
+             std::ostream& os = std::cout) const override;
 
   /** Check if two factors are equal */
   virtual bool equals(const NonlinearFactor& f, double tol = 1e-9) const;
@@ -197,7 +198,8 @@ public:
 
   /** Print */
   void print(const std::string& s = "",
-    const KeyFormatter& keyFormatter = DefaultKeyFormatter) const override;
+    const KeyFormatter& keyFormatter = DefaultKeyFormatter,
+    std::ostream& os = std::cout) const override;
 
   /** Check if two factors are equal */
   bool equals(const NonlinearFactor& f, double tol = 1e-9) const override;

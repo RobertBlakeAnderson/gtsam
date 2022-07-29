@@ -60,14 +60,14 @@ namespace gtsam {
   /* ************************************************************************* */
   template<class BAYESNET, class GRAPH>
   void EliminationTree<BAYESNET,GRAPH>::Node::print(
-    const std::string& str, const KeyFormatter& keyFormatter) const
+    const std::string& str, const KeyFormatter& keyFormatter, std::ostream& os) const
   {
-    std::cout << str << "(" << keyFormatter(key) << ")\n";
+    os << str << "(" << keyFormatter(key) << ")\n";
     for(const sharedFactor& factor: factors) {
       if(factor)
-        factor->print(str);
+        factor->print(str, DefaultKeyFormatter, os);
       else
-        std::cout << str << "null factor\n";
+        os << str << "null factor\n";
     }
   }
 
@@ -204,9 +204,9 @@ namespace gtsam {
 
   /* ************************************************************************* */
   template<class BAYESNET, class GRAPH>
-  void EliminationTree<BAYESNET,GRAPH>::print(const std::string& name, const KeyFormatter& formatter) const
+  void EliminationTree<BAYESNET,GRAPH>::print(const std::string& name, const KeyFormatter& formatter, std::ostream& os) const
   {
-    treeTraversal::PrintForest(*this, name, formatter);
+    treeTraversal::PrintForest(*this, name, formatter, os);
   }
 
   /* ************************************************************************* */

@@ -58,7 +58,8 @@ namespace gtsam {
     /// print
     void print(
         const std::string& s = "",
-        const KeyFormatter& formatter = DefaultKeyFormatter) const override = 0;
+        const KeyFormatter& formatter = DefaultKeyFormatter,
+        std::ostream& os = std::cout) const override = 0;
 
     /** Equals for testable */
     virtual bool equals(const GaussianFactor& lf, double tol = 1e-9) const = 0;

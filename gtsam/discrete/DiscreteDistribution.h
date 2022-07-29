@@ -74,7 +74,8 @@ class GTSAM_EXPORT DiscreteDistribution : public DiscreteConditional {
   /// GTSAM-style print
   void print(
       const std::string& s = "Discrete Prior: ",
-      const KeyFormatter& formatter = DefaultKeyFormatter) const override;
+      const KeyFormatter& formatter = DefaultKeyFormatter,
+      std::ostream& os = std::cout) const override;
 
   /// @}
   /// @name Standard interface

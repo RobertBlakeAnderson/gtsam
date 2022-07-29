@@ -83,21 +83,22 @@ bool HybridFactor::equals(const HybridFactor &lf, double tol) const {
 
 /* ************************************************************************ */
 void HybridFactor::print(const std::string &s,
-                         const KeyFormatter &formatter) const {
-  std::cout << s;
-  if (isContinuous_) std::cout << "Continuous ";
-  if (isDiscrete_) std::cout << "Discrete ";
-  if (isHybrid_) std::cout << "Hybrid ";
+                         const KeyFormatter &formatter,
+                         std::ostream& os) const {
+  os << s;
+  if (isContinuous_) os << "Continuous ";
+  if (isDiscrete_) os << "Discrete ";
+  if (isHybrid_) os << "Hybrid ";
   for (size_t c=0; c<continuousKeys_.size(); c++) {
-    std::cout << formatter(continuousKeys_.at(c));
+    os << formatter(continuousKeys_.at(c));
     if (c < continuousKeys_.size() - 1) {
-      std::cout << " ";
+      os << " ";
     } else {
-      std::cout << "; ";
+      os << "; ";
     }
   }
   for(auto && discreteKey: discreteKeys_) {
-    std::cout << formatter(discreteKey.first) << " ";
+    os << formatter(discreteKey.first) << " ";
   }
 }
 

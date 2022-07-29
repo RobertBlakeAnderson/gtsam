@@ -22,8 +22,9 @@
 namespace gtsam {
 
 void DiscreteDistribution::print(const std::string& s,
-                                 const KeyFormatter& formatter) const {
-  Base::print(s, formatter);
+                                 const KeyFormatter& formatter,
+                                 std::ostream& os) const {
+  Base::print(s, formatter, os);
 }
 
 double DiscreteDistribution::operator()(size_t value) const {

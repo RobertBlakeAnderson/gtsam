@@ -88,31 +88,31 @@ namespace gtsam {
   }
 
   /* ************************************************************************ */
-  void GaussianConditional::print(const string &s, const KeyFormatter& formatter) const {
-    cout << s << " p(";
+  void GaussianConditional::print(const string &s, const KeyFormatter& formatter, std::ostream& os) const {
+    os << s << " p(";
     for (const_iterator it = beginFrontals(); it != endFrontals(); ++it) {
-      cout << (boost::format("%1%") % (formatter(*it))).str()
+      os << (boost::format("%1%") % (formatter(*it))).str()
            << (nrFrontals() > 1 ? " " : "");
     }
 
     if (nrParents()) {
-      cout << " |";
+      os << " |";
       for (const_iterator it = beginParents(); it != endParents(); ++it) {
-        cout << " " << (boost::format("%1%") % (formatter(*it))).str();
+        os << " " << (boost::format("%1%") % (formatter(*it))).str();
       }
     }
-    cout << ")" << endl;
+    os << ")" << endl;
 
-    cout << formatMatrixIndented("  R = ", R()) << endl;
+    os << formatMatrixIndented("  R = ", R()) << endl;
     for (const_iterator it = beginParents() ; it != endParents() ; ++it) {
-      cout << formatMatrixIndented((boost::format("  S[%1%] = ")%(formatter(*it))).str(), getA(it))
+      os << formatMatrixIndented((boost::format("  S[%1%] = ")%(formatter(*it))).str(), getA(it))
         << endl;
     }
-    cout << formatMatrixIndented("  d = ", getb(), true) << "\n";
+    os << formatMatrixIndented("  d = ", getb(), true) << "\n";
     if (model_)
-      model_->print("  Noise model: ");
+      model_->print("  Noise model: ", os);
     else
-      cout << "  No noise model" << endl;
+      os << "  No noise model" << endl;
   }
 
   /* ************************************************************************* */

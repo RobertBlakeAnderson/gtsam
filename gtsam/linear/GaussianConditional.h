@@ -112,7 +112,8 @@ namespace gtsam {
     /** print */
     void print(
         const std::string& = "GaussianConditional",
-        const KeyFormatter& formatter = DefaultKeyFormatter) const override;
+        const KeyFormatter& formatter = DefaultKeyFormatter,
+        std::ostream& os = std::cout) const override;
 
     /** equals function */
     bool equals(const GaussianFactor&cg, double tol = 1e-9) const override;

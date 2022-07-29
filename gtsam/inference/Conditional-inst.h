@@ -26,15 +26,17 @@ namespace gtsam {
 
   /* ************************************************************************* */
   template<class FACTOR, class DERIVEDFACTOR>
-  void Conditional<FACTOR,DERIVEDFACTOR>::print(const std::string& s, const KeyFormatter& formatter) const {
-    std::cout << s << " P(";
+  void Conditional<FACTOR,DERIVEDFACTOR>::print(const std::string& s,
+      const KeyFormatter& formatter,
+      std::ostream& os) const {
+    os << s << " P(";
     for(Key key: frontals())
-      std::cout << " " << formatter(key);
+      os << " " << formatter(key);
     if (nrParents() > 0)
-      std::cout << " |";
+      os << " |";
     for(Key parent: parents())
-      std::cout << " " << formatter(parent);
-    std::cout << ")" << std::endl;
+      os << " " << formatter(parent);
+    os << ")" << std::endl;
   }
 
   /* ************************************************************************* */

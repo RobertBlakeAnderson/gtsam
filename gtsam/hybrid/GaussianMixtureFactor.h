@@ -109,7 +109,8 @@ class GTSAM_EXPORT GaussianMixtureFactor : public HybridFactor {
 
   void print(
       const std::string &s = "HybridFactor\n",
-      const KeyFormatter &formatter = DefaultKeyFormatter) const override;
+      const KeyFormatter &formatter = DefaultKeyFormatter,
+      std::ostream& os = std::cout) const override;
   /// @}
 
   /// Getter for the underlying Gaussian Factor Decision Tree.

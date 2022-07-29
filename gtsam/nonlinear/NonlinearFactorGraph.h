@@ -88,7 +88,8 @@ namespace gtsam {
     /** print */
     void print(
         const std::string& str = "NonlinearFactorGraph: ",
-        const KeyFormatter& keyFormatter = DefaultKeyFormatter) const override;
+        const KeyFormatter& keyFormatter = DefaultKeyFormatter,
+        std::ostream& os = std::cout) const override;
 
     /** print errors along with factors*/
     void printErrors(const Values& values, const std::string& str = "NonlinearFactorGraph: ",

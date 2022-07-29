@@ -130,20 +130,21 @@ DiscreteConditional DiscreteConditional::marginal(Key key) const {
 
 /* ************************************************************************** */
 void DiscreteConditional::print(const string& s,
-                                const KeyFormatter& formatter) const {
-  cout << s << " P( ";
+                                const KeyFormatter& formatter,
+                                std::ostream& os) const {
+  os << s << " P( ";
   for (const_iterator it = beginFrontals(); it != endFrontals(); ++it) {
-    cout << formatter(*it) << " ";
+    os << formatter(*it) << " ";
   }
   if (nrParents()) {
-    cout << "| ";
+    os << "| ";
     for (const_iterator it = beginParents(); it != endParents(); ++it) {
-      cout << formatter(*it) << " ";
+      os << formatter(*it) << " ";
     }
   }
-  cout << "):\n";
+  os << "):\n";
   ADT::print("", formatter);
-  cout << endl;
+  os << endl;
 }
 
 /* ************************************************************************** */

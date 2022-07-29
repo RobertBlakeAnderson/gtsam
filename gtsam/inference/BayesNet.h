@@ -59,7 +59,8 @@ class BayesNet : public FactorGraph<CONDITIONAL> {
   /** print out graph */
   void print(
       const std::string& s = "BayesNet",
-      const KeyFormatter& formatter = DefaultKeyFormatter) const override;
+      const KeyFormatter& formatter = DefaultKeyFormatter,
+      std::ostream& os = std::cout) const override;
 
   /// @}
 

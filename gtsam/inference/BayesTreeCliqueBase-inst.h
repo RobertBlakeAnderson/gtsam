@@ -73,9 +73,9 @@ namespace gtsam {
   /* ************************************************************************* */
   template<class DERIVED, class FACTORGRAPH>
   void BayesTreeCliqueBase<DERIVED, FACTORGRAPH>::print(
-    const std::string& s, const KeyFormatter& keyFormatter) const
+    const std::string& s, const KeyFormatter& keyFormatter, std::ostream& os) const
   {
-    conditional_->print(s, keyFormatter);
+    conditional_->print(s, keyFormatter, os);
   }
 
   /* ************************************************************************* */

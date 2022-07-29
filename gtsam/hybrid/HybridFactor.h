@@ -104,7 +104,8 @@ class GTSAM_EXPORT HybridFactor : public Factor {
   /// print
   void print(
       const std::string &s = "HybridFactor\n",
-      const KeyFormatter &formatter = DefaultKeyFormatter) const override;
+      const KeyFormatter &formatter = DefaultKeyFormatter,
+      std::ostream& os = std::cout) const override;
 
   /// @}
   /// @name Standard Interface

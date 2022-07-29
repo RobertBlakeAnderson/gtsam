@@ -131,7 +131,8 @@ namespace gtsam {
     /** print this node */
     virtual void print(
         const std::string& s = "",
-        const KeyFormatter& keyFormatter = DefaultKeyFormatter) const;
+        const KeyFormatter& keyFormatter = DefaultKeyFormatter,
+        std::ostream& os = std::cout) const;
 
     /// @}
     /// @name Standard Interface

@@ -95,8 +95,9 @@ namespace gtsam {
 
     /// print
     void print(const std::string& s, const LabelFormatter& labelFormatter,
-               const ValueFormatter& valueFormatter) const override {
-      std::cout << s << " Leaf " << valueFormatter(constant_) << std::endl;
+               const ValueFormatter& valueFormatter,
+               std::ostream& os = std::cout) const override {
+      os << s << " Leaf " << valueFormatter(constant_) << std::endl;
     }
 
     /** Write graphviz format to stream `os`. */
@@ -266,12 +267,13 @@ namespace gtsam {
 
     /// print (as a tree).
     void print(const std::string& s, const LabelFormatter& labelFormatter,
-               const ValueFormatter& valueFormatter) const override {
-      std::cout << s << " Choice(";
-      std::cout << labelFormatter(label_) << ") " << std::endl;
+               const ValueFormatter& valueFormatter,
+               std::ostream& os = std::cout) const override {
+      os << s << " Choice(";
+      os << labelFormatter(label_) << ") " << std::endl;
       for (size_t i = 0; i < branches_.size(); i++)
         branches_[i]->print((boost::format("%s %d") % s % i).str(),
-                            labelFormatter, valueFormatter);
+                            labelFormatter, valueFormatter, os);
     }
 
     /** output to graphviz (as a a graph) */
@@ -847,8 +849,9 @@ namespace gtsam {
   template <typename L, typename Y>
   void DecisionTree<L, Y>::print(const std::string& s,
                                  const LabelFormatter& labelFormatter,
-                                 const ValueFormatter& valueFormatter) const {
-    root_->print(s, labelFormatter, valueFormatter);
+                                 const ValueFormatter& valueFormatter,
+                                 std::ostream& os) const {
+    root_->print(s, labelFormatter, valueFormatter, os);
   }
 
   template<typename L, typename Y>

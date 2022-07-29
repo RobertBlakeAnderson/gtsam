@@ -104,26 +104,27 @@ bool GaussianMixture::equals(const HybridFactor &lf, double tol) const {
 
 /* *******************************************************************************/
 void GaussianMixture::print(const std::string &s,
-                            const KeyFormatter &formatter) const {
-  std::cout << s;
-  if (isContinuous()) std::cout << "Continuous ";
-  if (isDiscrete()) std::cout << "Discrete ";
-  if (isHybrid()) std::cout << "Hybrid ";
-  BaseConditional::print("", formatter);
-  std::cout << " Discrete Keys = ";
+                            const KeyFormatter &formatter,
+                            std::ostream& os) const {
+  os << s;
+  if (isContinuous()) os << "Continuous ";
+  if (isDiscrete()) os << "Discrete ";
+  if (isHybrid()) os << "Hybrid ";
+  BaseConditional::print("", formatter, os);
+  os << " Discrete Keys = ";
   for (auto &dk : discreteKeys()) {
-    std::cout << "(" << formatter(dk.first) << ", " << dk.second << "), ";
+    os << "(" << formatter(dk.first) << ", " << dk.second << "), ";
   }
-  std::cout << "\n";
+  os << "\n";
   conditionals_.print(
       "", [&](Key k) { return formatter(k); },
       [&](const GaussianConditional::shared_ptr &gf) -> std::string {
         RedirectCout rd;
         if (!gf->empty())
-          gf->print("", formatter);
+          gf->print("", formatter, os);
         else
           return {"nullptr"};
         return rd.str();
-      });
+      }, os);
 }
 }  // namespace gtsam

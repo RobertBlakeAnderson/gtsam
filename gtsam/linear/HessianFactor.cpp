@@ -258,13 +258,14 @@ HessianFactor::HessianFactor(const GaussianFactorGraph& factors,
 
 /* ************************************************************************* */
 void HessianFactor::print(const std::string& s,
-    const KeyFormatter& formatter) const {
-  cout << s << "\n";
-  cout << " keys: ";
+    const KeyFormatter& formatter,
+    std::ostream& os const {
+  os << s << "\n";
+  os << " keys: ";
   for (const_iterator key = begin(); key != end(); ++key)
-    cout << formatter(*key) << "(" << getDim(key) << ") ";
-  cout << "\n";
-  gtsam::print(Matrix(info_.selfadjointView()),
+    os << formatter(*key) << "(" << getDim(key) << ") ";
+  os << "\n";
+  gtsam::print(Matrix(info_.selfadjointView(), os),
       "Augmented information matrix: ");
 }
 

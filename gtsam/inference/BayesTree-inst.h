@@ -212,9 +212,11 @@ namespace gtsam {
 
   /* ************************************************************************* */
   template<class CLIQUE>
-  void BayesTree<CLIQUE>::print(const std::string& s, const KeyFormatter& keyFormatter) const {
-    std::cout << s << ": cliques: " << size() << ", variables: " << nodes_.size() << std::endl;
-    treeTraversal::PrintForest(*this, s, keyFormatter);
+  void BayesTree<CLIQUE>::print(const std::string& s,
+        const KeyFormatter& keyFormatter,
+        std::ostream& os) const {
+    os << s << ": cliques: " << size() << ", variables: " << nodes_.size() << std::endl;
+    treeTraversal::PrintForest(*this, s, keyFormatter, os);
   }
 
   /* ************************************************************************* */

@@ -130,7 +130,8 @@ class GTSAM_EXPORT DiscreteFactorGraph
   /// print
   void print(
       const std::string& s = "DiscreteFactorGraph",
-      const KeyFormatter& formatter = DefaultKeyFormatter) const override;
+      const KeyFormatter& formatter = DefaultKeyFormatter,
+      std::ostream& os = std::cout) const override;
 
   /**
    * @brief Implement the sum-product algorithm

@@ -136,7 +136,8 @@ class GTSAM_EXPORT DiscreteConditional
   /// GTSAM-style print
   void print(
       const std::string& s = "Discrete Conditional: ",
-      const KeyFormatter& formatter = DefaultKeyFormatter) const override;
+      const KeyFormatter& formatter = DefaultKeyFormatter,
+      std::ostream& os = std::cout) const override;
 
   /// GTSAM-style equals
   bool equals(const DiscreteFactor& other, double tol = 1e-9) const override;

@@ -31,23 +31,23 @@ namespace gtsam {
 /* ************************************************************************** */
 // TODO(dellaert): copy/paste from DiscreteConditional.cpp :-(
 void DiscreteLookupTable::print(const std::string& s,
-                                const KeyFormatter& formatter) const {
-  using std::cout;
+                                const KeyFormatter& formatter,
+                                std::ostream& os) const {
   using std::endl;
 
-  cout << s << " g( ";
+  os << s << " g( ";
   for (const_iterator it = beginFrontals(); it != endFrontals(); ++it) {
-    cout << formatter(*it) << " ";
+    os << formatter(*it) << " ";
   }
   if (nrParents()) {
-    cout << "; ";
+    os << "; ";
     for (const_iterator it = beginParents(); it != endParents(); ++it) {
-      cout << formatter(*it) << " ";
+      os << formatter(*it) << " ";
     }
   }
-  cout << "):\n";
-  ADT::print("", formatter);
-  cout << endl;
+  os << "):\n";
+  ADT::print("", formatter, os);
+  os << endl;
 }
 
 /* ************************************************************************** */

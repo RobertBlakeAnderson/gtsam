@@ -107,7 +107,8 @@ namespace gtsam {
     /** Print with optional formatter */
     void print(
         const std::string& str = "",
-        const KeyFormatter& keyFormatter = DefaultKeyFormatter) const override;
+        const KeyFormatter& keyFormatter = DefaultKeyFormatter,
+        std::ostream& os = std::cout) const override;
 
     /** Check equality */
     bool equals(const This& c, double tol = 1e-9) const;

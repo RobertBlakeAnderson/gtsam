@@ -73,13 +73,14 @@ namespace gtsam {
 
     /** print */
     void print(const std::string& s,
-       const KeyFormatter& keyFormatter = DefaultKeyFormatter) const override {
-      std::cout << s << "PriorFactor on " << keyFormatter(this->key()) << "\n";
+       const KeyFormatter& keyFormatter = DefaultKeyFormatter,
+       std::ostream& os = std::cout) const override {
+      os << s << "PriorFactor on " << keyFormatter(this->key()) << "\n";
       traits<T>::Print(prior_, "  prior mean: ");
       if (this->noiseModel_)
         this->noiseModel_->print("  noise model: ");
       else
-        std::cout << "no noise model" << std::endl;
+        os << "no noise model" << std::endl;
     }
 
     /** equals */

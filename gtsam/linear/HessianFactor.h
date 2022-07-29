@@ -191,7 +191,8 @@ namespace gtsam {
 
     /** Print the factor for debugging and testing (implementing Testable) */
     void print(const std::string& s = "",
-        const KeyFormatter& formatter = DefaultKeyFormatter) const override;
+        const KeyFormatter& formatter = DefaultKeyFormatter,
+        std::ostream& os = std::cout) const override;
 
     /** Compare to another factor for testing (implementing Testable) */
     bool equals(const GaussianFactor& lf, double tol = 1e-9) const override;

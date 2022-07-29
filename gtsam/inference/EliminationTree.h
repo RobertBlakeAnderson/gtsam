@@ -74,7 +74,7 @@ namespace gtsam {
       sharedFactor eliminate(const boost::shared_ptr<BayesNetType>& output,
         const Eliminate& function, const FastVector<sharedFactor>& childrenFactors) const;
 
-      void print(const std::string& str, const KeyFormatter& keyFormatter) const;
+      void print(const std::string& str, const KeyFormatter& keyFormatter, std::ostream& os = std::cout) const;
     };
 
     typedef boost::shared_ptr<Node> sharedNode; ///< Shared pointer to Node
@@ -135,7 +135,8 @@ namespace gtsam {
 
     /** Print the tree to cout */
     void print(const std::string& name = "EliminationTree: ",
-      const KeyFormatter& formatter = DefaultKeyFormatter) const;
+      const KeyFormatter& formatter = DefaultKeyFormatter,
+      std::ostream& os = std::cout) const;
 
   protected:
     /** Test whether the tree is equal to another */

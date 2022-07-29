@@ -56,7 +56,8 @@ class GTSAM_EXPORT DiscreteLookupTable : public DiscreteConditional {
   /// GTSAM-style print
   void print(
       const std::string& s = "Discrete Lookup Table: ",
-      const KeyFormatter& formatter = DefaultKeyFormatter) const override;
+      const KeyFormatter& formatter = DefaultKeyFormatter,
+      std::ostream& os = std::cout) const override;
 
   /**
    * @brief return assignment for single frontal variable that maximizes value.

@@ -74,8 +74,9 @@ namespace gtsam {
     /// print
     GTSAM_EXPORT void print(
         const std::string& s = "SymbolicBayesNet",
-        const KeyFormatter& formatter = DefaultKeyFormatter) const override {
-      Base::print(s, formatter);
+        const KeyFormatter& formatter = DefaultKeyFormatter,
+        std::ostream& os = std::cout) const override {
+      Base::print(s, formatter, os);
     }
 
     /// @}

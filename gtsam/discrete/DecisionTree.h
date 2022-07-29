@@ -94,7 +94,8 @@ namespace gtsam {
       // everything else is virtual, no documentation here as internal
       virtual void print(const std::string& s,
                          const LabelFormatter& labelFormatter,
-                         const ValueFormatter& valueFormatter) const = 0;
+                         const ValueFormatter& valueFormatter,
+                         std::ostream& os = std::cout) const = 0;
       virtual void dot(std::ostream& os, const LabelFormatter& labelFormatter,
                        const ValueFormatter& valueFormatter,
                        bool showZero) const = 0;
@@ -209,7 +210,8 @@ namespace gtsam {
      * @param valueFormatter Functor to format the node value.
      */
     void print(const std::string& s, const LabelFormatter& labelFormatter,
-               const ValueFormatter& valueFormatter) const;
+               const ValueFormatter& valueFormatter,
+               std::ostream& os = std::cout) const;
 
     // Testable
     bool equals(const DecisionTree& other,

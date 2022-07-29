@@ -146,12 +146,14 @@ typedef FastSet<FactorIndex> FactorIndexSet;
    /// print
    virtual void print(
        const std::string& s = "Factor",
-       const KeyFormatter& formatter = DefaultKeyFormatter) const;
+       const KeyFormatter& formatter = DefaultKeyFormatter,
+       std::ostream& os = std::cout) const;
 
    /// print only keys
    virtual void printKeys(
        const std::string& s = "Factor",
-       const KeyFormatter& formatter = DefaultKeyFormatter) const;
+       const KeyFormatter& formatter = DefaultKeyFormatter,
+       std::ostream& os = std::cout) const;
 
     /// check equality
     bool equals(const This& other, double tol = 1e-9) const;
